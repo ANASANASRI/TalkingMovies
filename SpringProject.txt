@@ -1,0 +1,55 @@
+spring initializr - maven - jar 
+
+**********************************************
+
+Lombok:
+Thymeleaf:
+Spring Web:
+Spring Data JPA:
+H2 Database:
+
+*********************ENTITIES*************************
+@Entity : Cette annotation spécifie que la classe est une entité et doit être mappée à une table de base de données.
+
+@Data, @AllArgsConstructor, @NoArgsConstructor : Ce sont des annotations de Lombok qui génèrent du code boilerplate tel que des getters, setters, constructeurs et méthodes toString.
+
+@Id : Cette annotation indique que le champ id est la clé primaire de l'entité.
+
+@GeneratedValue(strategy = GenerationType.IDENTITY) : Cette annotation spécifie que la valeur de la clé primaire sera générée automatiquement par la base de données. La stratégie GenerationType.IDENTITY utilise généralement une colonne d'auto-incrémentation dans la base de données.
+
+@NotEmpty : Cette annotation indique que le champ nom ne doit pas être vide.
+
+@Size(min = 3, max = 40) : Cette annotation spécifie les contraintes de longueur minimale et maximale pour le champ nom.
+
+@Temporal(TemporalType.DATE) : Cette annotation spécifie que le champ dateNaissance doit être stocké en tant que date dans la base de données.
+
+@DateTimeFormat(pattern = "yyyy-MM-dd") : Cette annotation spécifie le format dans lequel le champ dateNaissance doit être affiché et analysé. Dans ce cas, il est défini sur le format "yyyy-MM-dd".
+
+private boolean malade : Ce champ représente si le patient est malade ou non, indiqué par une valeur booléenne.
+
+@DecimalMin("100") : Cette annotation spécifie que le champ score doit avoir une valeur minimale de 100.
+
+***********************JDBC***********************
+ajouter :
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.12</version>
+        </dependency>
+
+application.properties :
+            #spring.datasource.url=jdbc:h2:mem:patients_db
+            #spring.h2.console.enabled=true
+            server.port=8082
+            spring.datasource.url=jdbc:mysql://localhost:3306/movie_db?createDatabaseIfNotExist=true
+            spring.datasource.username=root
+            spring.datasource.password=
+            spring.jpa.hibernate.ddl-auto = update
+            spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MariaDBDialect
+            spring.jpa.show-sql=true
+            spring.mvc.format.date=yyyy-MM-dd
+
+            #spring.thymeleaf.cacheable=false
+
+
+*****************************************************
